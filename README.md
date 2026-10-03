@@ -8,7 +8,9 @@
 
 A crypto dashboard with live market data, interactive charts and a signal-analysis engine. It brings prices, technical indicators, derivatives data, DeFi and news into one workspace. AI news summaries are optional; the app runs without API keys or paid services.
 
-[Screenshots](#screenshots) · [Run locally](#run-locally) · [Demo walkthrough](docs/portfolio.md) · [Architecture](docs/architecture.md)
+[Portfolio preview](https://manostsagkos.github.io/CryptoWorld/) · [Screenshots](#screenshots) · [Run interactive demo](https://codespaces.new/ManosTsagkos/CryptoWorld) · [Download source](https://github.com/ManosTsagkos/CryptoWorld/releases/latest) · [Architecture](docs/architecture.md)
+
+The **[public portfolio preview](https://manostsagkos.github.io/CryptoWorld/)** opens without installation or a GitHub account. It presents real app screenshots, the architecture and demo instructions. It is a static showcase, not a hosted version of the live dashboard; use Codespaces or a local clone for the full interactive app.
 
 ## Screenshots
 
@@ -44,6 +46,10 @@ npm run dev
 Open the URL printed in the terminal. An internet connection is needed for market data and news, but no exchange account or Cloudflare account is needed for local development.
 
 For a quick look around, follow the [demo walkthrough](docs/portfolio.md). It covers the globe, charts, watchlist and no-key signal analysis in a few minutes.
+
+## Portfolio website
+
+The GitHub Pages showcase is built from `docs/showcase/` with `npm run build:portfolio`. The build copies only its HTML, stylesheet, script, logo and three screenshots into `dist/portfolio`; it never deploys Worker code, databases, environment files or the full application build. The Pages workflow runs the complete quality check before publishing. See [publishing](docs/publishing.md) for the setup.
 
 ## What's in the app
 

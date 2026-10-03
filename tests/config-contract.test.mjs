@@ -62,3 +62,18 @@ test("the demo container sets up a local database without loading owner credenti
   assert.equal(container.remoteEnv, undefined);
   assert.equal(container.mounts, undefined);
 });
+
+test("Pages publishes only the portfolio artifact after the full quality check", async () => {
+  const [workflow, packageText] = await Promise.all([
+    text(".github/workflows/portfolio-pages.yml"),
+    text("package.json"),
+  ]);
+  const packageJson = JSON.parse(packageText);
+  assert.equal(packageJson.scripts["build:portfolio"], "node scripts/build-portfolio.mjs");
+  assert.match(workflow, /branches: \[main\]/);
+  assert.match(workflow, /run: npm run check[\s\S]*run: npm run build:portfolio/);
+  assert.match(workflow, /path: dist\/portfolio\s/);
+  assert.match(workflow, /needs: build/);
+  assert.match(workflow, /name: github-pages/);
+  assert.doesNotMatch(workflow, /pull_request:|secrets\./);
+});

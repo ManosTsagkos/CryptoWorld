@@ -1,6 +1,6 @@
 {
   "name": "cryptoworld",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A full-stack crypto market-intelligence dashboard with resilient data fallbacks, technical analysis and optional AI insights.",
   "private": true,
   "license": "UNLICENSED",
@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "build:portfolio": "node scripts/build-portfolio.mjs",
     "typecheck": "tsc --noEmit --incremental false",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
