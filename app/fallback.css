@@ -1,0 +1,95 @@
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10000;
+  transform: translateY(-180%);
+  padding: 12px 18px;
+  background: #071525;
+  border: 1px solid #00eaff;
+  border-radius: 6px;
+  color: #f2f8ff;
+  font-size: 14px;
+  text-decoration: none;
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid #00eaff;
+  outline-offset: 3px;
+}
+.fallback-page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 30% 20%, #051c35 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 80%, #190a32 0%, transparent 50%), #02050d;
+  color: #eef5ff;
+}
+.fallback-card {
+  width: min(100%, 560px);
+  padding: clamp(26px, 5vw, 48px);
+  border: 1px solid #22527b;
+  border-radius: 12px;
+  background: #040c19;
+  box-shadow: 0 0 45px #00b4ff14;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+.fallback-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #126c8f;
+  border-radius: 16px;
+  background: #00eaff0c;
+  color: #00eaff;
+  margin-bottom: 28px;
+}
+.fallback-eyebrow {
+  font:
+    600 11px var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.12em;
+  color: #00d4ef;
+}
+.fallback-card h1 {
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.2;
+  margin: 16px 0;
+}
+.fallback-card p:not(.fallback-eyebrow) {
+  color: #a6b8d2;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.fallback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+.fallback-actions button,
+.fallback-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #16748e;
+  border-radius: 6px;
+  background: #00eaff0c;
+  color: #6eefff;
+  font:
+    600 13px var(--font-geist-sans),
+    sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+.fallback-actions :is(a, button):focus-visible {
+  outline: 2px solid #00eaff;
+  outline-offset: 4px;
+}

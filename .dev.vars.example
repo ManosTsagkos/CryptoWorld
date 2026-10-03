@@ -1,0 +1,9 @@
+# Copy this file to `.dev.vars` for local Cloudflare Worker development.
+# Add at least one AI provider key to enable AI news interpretation.
+# Never commit `.dev.vars` or real credentials.
+
+GROQ_API_KEY=
+GEMINI_API_KEY=
+OPENROUTER_API_KEY=
+OPENROUTER_MODEL=
+CEREBRAS_API_KEY=

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.next/
+.vinext/
+.wrangler/
+.local/
+.local-assets/
+outputs/
+work/
+coverage/
+types/
+drizzle/
+package-lock.json
+next-env.d.ts
+.openai/hosting.json
+.dev.vars*
+.env*

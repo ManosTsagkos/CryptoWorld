@@ -1,0 +1,13 @@
+{
+  "name": "Top Crypto Signals",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
+  "remoteUser": "node",
+  "postCreateCommand": "npm ci && npm run db:migrate:local",
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Top Crypto Signals demo",
+      "onAutoForward": "notify"
+    }
+  }
+}
