@@ -25,7 +25,7 @@
     "types:cloudflare": "wrangler types types/cloudflare-runtime.d.ts --include-env false --include-runtime true"
   },
   "dependencies": {
-    "drizzle-orm": "0.45.2",
+    "drizzle-orm": "0.45.3",
     "lightweight-charts": "^5.2.0",
     "lucide-react": "^1.25.0",
     "next": "16.3.8",
