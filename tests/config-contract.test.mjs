@@ -77,3 +77,11 @@ test("Pages publishes only the portfolio artifact after the full quality check",
   assert.match(workflow, /name: github-pages/);
   assert.doesNotMatch(workflow, /pull_request:|secrets\./);
 });
+
+test("portfolio copy uses the unhyphenated Crypto all in one tagline", async () => {
+  for (const path of ["README.md", "docs/showcase/index.html"]) {
+    const copy = await text(path);
+    assert.match(copy, /Crypto all in one/);
+    assert.doesNotMatch(copy, /all-in-one/i);
+  }
+});

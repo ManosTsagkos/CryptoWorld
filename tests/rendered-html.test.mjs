@@ -107,6 +107,9 @@ test("server-renders the branded dashboard without exposing credentials", async 
   const html = await response.text();
   assert.match(html, /<title>CryptoWorld/);
   assert.match(html, /aria-label="CryptoWorld home"/);
+  assert.match(html, /CRYPTO ALL IN ONE/);
+  assert.match(html, /<title>CryptoWorld — Crypto All In One<\/title>/);
+  assert.doesNotMatch(html, /all-in-one/i);
   assert.match(html, /rel="icon"[^>]+href="\/cryptoworld-logo\.png"/);
   assert.doesNotMatch(html, /Top Crypto Signals|TOP CRYPTO SIGNALS/);
   assert.match(html, /SIGNAL INTELLIGENCE CORE/);

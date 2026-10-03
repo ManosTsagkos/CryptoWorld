@@ -6,7 +6,7 @@
 
 [![Quality checks](https://github.com/ManosTsagkos/CryptoWorld/actions/workflows/quality.yml/badge.svg)](https://github.com/ManosTsagkos/CryptoWorld/actions/workflows/quality.yml)
 
-A crypto dashboard with live market data, interactive charts and a signal-analysis engine. It brings prices, technical indicators, derivatives data, DeFi and news into one workspace. AI news summaries are optional; the app runs without API keys or paid services.
+Crypto all in one: a dashboard with live market data, interactive charts and a signal-analysis engine. It brings prices, technical indicators, derivatives data, DeFi and news into one workspace. AI news summaries are optional; the app runs without API keys or paid services.
 
 [Portfolio preview](https://manostsagkos.github.io/CryptoWorld/) · [Screenshots](#screenshots) · [Run interactive demo](https://codespaces.new/ManosTsagkos/CryptoWorld) · [Download source](https://github.com/ManosTsagkos/CryptoWorld/releases/latest) · [Architecture](docs/architecture.md)
 

@@ -1,6 +1,6 @@
 {
   "name": "cryptoworld",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A full-stack crypto market-intelligence dashboard with resilient data fallbacks, technical analysis and optional AI insights.",
   "private": true,
   "license": "UNLICENSED",

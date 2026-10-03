@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = `${protocol}://${host}`;
 
   return {
-    title: "CryptoWorld — All-in-One Crypto Intelligence",
+    title: "CryptoWorld — Crypto All In One",
     description:
       "Live crypto market data, interactive analytics and optional AI-assisted signals. A full-stack portfolio project.",
     icons: {
@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       siteName: "CryptoWorld",
-      title: "CryptoWorld — All-in-One Crypto Intelligence",
+      title: "CryptoWorld — Crypto All In One",
       description: "Live market data, interactive charts and optional AI-assisted analysis.",
       images: [
         {
@@ -47,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "CryptoWorld — All-in-One Crypto Intelligence",
+      title: "CryptoWorld — Crypto All In One",
       description: "Live market data, interactive charts and optional AI-assisted analysis.",
       images: [`${origin}/og.png`],
     },

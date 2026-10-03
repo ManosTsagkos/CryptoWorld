@@ -373,7 +373,7 @@ function CryptoWorldBrand({ onClick }: { onClick: () => void }) {
         <strong>
           Crypto<span>World</span>
         </strong>
-        <small>CRYPTO ALL-IN-ONE</small>
+        <small>CRYPTO ALL IN ONE</small>
       </span>
     </button>
   );
