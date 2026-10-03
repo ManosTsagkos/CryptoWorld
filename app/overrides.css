@@ -1311,10 +1311,6 @@ body {
   backdrop-filter: blur(18px) saturate(125%);
 }
 
-.logo-mark {
-  filter: drop-shadow(0 0 8px rgba(32, 216, 255, 0.5));
-}
-
 .search-box {
   border-color: rgba(97, 122, 178, 0.38);
   border-radius: 9px;
@@ -1978,11 +1974,6 @@ body {
   backdrop-filter: blur(16px) saturate(145%);
 }
 
-.logo-mark {
-  filter: drop-shadow(0 0 10px rgba(0, 222, 255, 0.85))
-    drop-shadow(0 0 17px rgba(109, 45, 255, 0.28));
-}
-
 .search-box {
   border-color: rgba(96, 122, 204, 0.58);
   border-radius: 5px;
@@ -2622,54 +2613,6 @@ body {
   padding: 0 12px;
   font-size: 11px;
   letter-spacing: 0.04em;
-}
-
-.logo-mark {
-  width: 48px;
-  height: 50px;
-  filter: drop-shadow(0 0 10px rgba(0, 202, 255, 0.85));
-}
-.logo-mark span {
-  position: relative;
-  width: 42px;
-  height: 48px;
-  border: 0;
-  background: linear-gradient(145deg, #00eaff, #006cff 52%, #b928ff);
-  clip-path: polygon(50% 0, 94% 24%, 94% 75%, 50% 100%, 6% 75%, 6% 24%);
-  transform: none;
-  box-shadow: none;
-}
-.logo-mark span:before {
-  content: "";
-  position: absolute;
-  inset: 2px;
-  background: #020612;
-  clip-path: inherit;
-}
-.logo-mark i {
-  width: 25px;
-  height: 29px;
-  border: 1px solid #00bfff;
-  clip-path: polygon(50% 0, 94% 24%, 94% 75%, 50% 100%, 6% 75%, 6% 24%);
-  transform: none;
-  box-shadow: inset 0 0 9px rgba(55, 41, 255, 0.25);
-}
-.logo-mark b {
-  width: 1px;
-  height: 42px;
-  border: 0;
-  background: linear-gradient(transparent, #8d43ff 20% 80%, transparent);
-  transform: rotate(60deg);
-  box-shadow: 0 0 5px #8d43ff;
-}
-.logo-mark:after {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 42px;
-  background: linear-gradient(transparent, #00dfff 20% 80%, transparent);
-  transform: rotate(-60deg);
-  box-shadow: 0 0 5px #00dfff;
 }
 
 .market-watch-action {

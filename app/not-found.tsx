@@ -8,7 +8,7 @@ export default function NotFound() {
         <span className="fallback-icon">
           <Compass size={32} aria-hidden="true" />
         </span>
-        <p className="fallback-eyebrow">TOP CRYPTO SIGNALS · 404</p>
+        <p className="fallback-eyebrow">CRYPTOWORLD · 404</p>
         <h1 id="not-found-title">This page is off the map.</h1>
         <p>
           The link may be incomplete. Open the dashboard to explore markets, analytics and signals.

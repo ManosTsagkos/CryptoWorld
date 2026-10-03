@@ -1,4 +1,4 @@
-/** Cloudflare Worker entry point for Top Crypto Signals. */
+/** Cloudflare Worker entry point for CryptoWorld. */
 import {
   handleImageOptimization,
   DEFAULT_DEVICE_SIZES,
@@ -1903,7 +1903,7 @@ async function callGroq(apiKey: string, prompt: string) {
         {
           role: "system",
           content:
-            "You are the risk-first crypto market analyst inside Top Crypto Signals. Use only the supplied live metrics and headlines. Never promise returns. Return valid JSON only.",
+            "You are the risk-first crypto market analyst inside CryptoWorld. Use only the supplied live metrics and headlines. Never promise returns. Return valid JSON only.",
         },
         { role: "user", content: prompt },
       ],
@@ -1925,7 +1925,7 @@ async function callOpenRouter(
     headers: {
       "content-type": "application/json",
       authorization: `Bearer ${apiKey}`,
-      "x-title": "Top Crypto Signals",
+      "x-title": "CryptoWorld",
     },
     body: JSON.stringify({
       model,
@@ -1935,7 +1935,7 @@ async function callOpenRouter(
         {
           role: "system",
           content:
-            "You are the risk-first crypto market analyst inside Top Crypto Signals. Use only the supplied live metrics and headlines. Never promise returns. Return valid JSON only.",
+            "You are the risk-first crypto market analyst inside CryptoWorld. Use only the supplied live metrics and headlines. Never promise returns. Return valid JSON only.",
         },
         { role: "user", content: prompt },
       ],
@@ -1960,7 +1960,7 @@ async function callGemini(apiKey: string, prompt: string) {
             systemInstruction: {
               parts: [
                 {
-                  text: "You are the risk-first crypto market analyst inside Top Crypto Signals. Use only supplied data and return valid JSON only.",
+                  text: "You are the risk-first crypto market analyst inside CryptoWorld. Use only supplied data and return valid JSON only.",
                 },
               ],
             },
@@ -1997,7 +1997,7 @@ async function callCerebras(apiKey: string, prompt: string) {
         {
           role: "system",
           content:
-            "You are the risk-first crypto market analyst inside Top Crypto Signals. Use only the supplied live metrics and headlines. Never promise returns. Return valid JSON only.",
+            "You are the risk-first crypto market analyst inside CryptoWorld. Use only the supplied live metrics and headlines. Never promise returns. Return valid JSON only.",
         },
         { role: "user", content: prompt },
       ],
@@ -3519,7 +3519,8 @@ function renderSharePage(payload: SharePayload, origin: string): string {
 <meta property="og:type" content="website" />
 <meta property="og:title" content="${safeTitle}" />
 <meta property="og:description" content="${safeDescription}" />
-<meta property="og:site_name" content="Top Crypto Signals" />
+<meta property="og:site_name" content="CryptoWorld" />
+<link rel="icon" href="${safeOrigin}/cryptoworld-logo.png" type="image/png" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="${safeTitle}" />
 <meta name="twitter:description" content="${safeDescription}" />
@@ -3540,7 +3541,7 @@ function renderSharePage(payload: SharePayload, origin: string): string {
 </head>
 <body>
   <div class="card">
-    <div class="eyebrow">Top Crypto Signals · ${safeTimeframe}</div>
+    <div class="eyebrow">CryptoWorld · ${safeTimeframe}</div>
     <h1>${safeSymbol}/USDT</h1>
     <div class="dir">${safeDirection} BIAS · ${payload.c}% CONFIDENCE</div>
     <div class="stats">

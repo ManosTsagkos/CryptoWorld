@@ -365,13 +365,17 @@ const nav: [string, LucideIcon, string?][] = [
   ["Settings", Settings],
 ];
 
-function LogoMark() {
+function CryptoWorldBrand({ onClick }: { onClick: () => void }) {
   return (
-    <div className="logo-mark" aria-label="Top Crypto Signals">
-      <span />
-      <i />
-      <b />
-    </div>
+    <button className="cryptoworld-brand" onClick={onClick} aria-label="CryptoWorld home">
+      <img src="/cryptoworld-logo.png" alt="" width={48} height={48} />
+      <span className="cryptoworld-wordmark">
+        <strong>
+          Crypto<span>World</span>
+        </strong>
+        <small>CRYPTO ALL-IN-ONE</small>
+      </span>
+    </button>
   );
 }
 
@@ -549,7 +553,7 @@ function TopHeader({
   return (
     <header className="top-header">
       <div className="logo-cell">
-        <LogoMark />
+        <CryptoWorldBrand onClick={() => navigate("Dashboard")} />
       </div>
       <button className="mobile-menu" onClick={openMenu} aria-label="Open navigation">
         <Menu size={18} />
@@ -1722,7 +1726,7 @@ function renderShareCanvas(analysis: SignalAnalysis): HTMLCanvasElement {
 
   ctx.fillStyle = "#7688a3";
   ctx.font = "600 20px monospace";
-  ctx.fillText("TOP CRYPTO SIGNALS · CONVERGENCE ENGINE", 60, 90);
+  ctx.fillText("CRYPTOWORLD · CONVERGENCE ENGINE", 60, 90);
 
   ctx.fillStyle = "#e7edf9";
   ctx.font = "800 56px sans-serif";
@@ -1962,7 +1966,7 @@ function SignalIntelligenceCore({
       };
       const encoded = encodeSharePayload(payload);
       const shareUrl = `${window.location.origin}/share?d=${encoded}`;
-      const shareText = `${analysis.symbol} ${SIGNAL_TIMEFRAMES[analysis.timeframe].label} — ${analysis.direction} bias (${analysis.confidence}% confidence) via Top Crypto Signals`;
+      const shareText = `${analysis.symbol} ${SIGNAL_TIMEFRAMES[analysis.timeframe].label} — ${analysis.direction} bias (${analysis.confidence}% confidence) via CryptoWorld`;
 
       const canvas = renderShareCanvas(analysis);
       const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, "image/png"));
@@ -2238,7 +2242,7 @@ function SignalIntelligenceCore({
             <div className="signal-lab-shell">
               <header>
                 <div>
-                  <span className="analysis-kicker">TOP CRYPTO SIGNALS · CONVERGENCE ENGINE</span>
+                  <span className="analysis-kicker">CRYPTOWORLD · CONVERGENCE ENGINE</span>
                   <h2>
                     {analysis.symbol}/USDT <em>{SIGNAL_TIMEFRAMES[analysis.timeframe].label}</em>
                   </h2>
@@ -2767,7 +2771,7 @@ function PremiumAIInsights({
           >
             <X size={14} />
           </button>
-          <span className="analysis-kicker">TOP CRYPTO SIGNALS · RULES ENGINE</span>
+          <span className="analysis-kicker">CRYPTOWORLD · RULES ENGINE</span>
           <h3>{signal.name} live momentum report</h3>
           <strong style={{ color: signal.accent }}>{signal.score}%</strong>
           {[

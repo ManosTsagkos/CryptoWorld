@@ -21,7 +21,7 @@ export default function DashboardError({
         <span className="fallback-icon">
           <ShieldAlert size={32} aria-hidden="true" />
         </span>
-        <p className="fallback-eyebrow">TOP CRYPTO SIGNALS</p>
+        <p className="fallback-eyebrow">CRYPTOWORLD</p>
         <h1 id="error-title">The dashboard could not load.</h1>
         <p>A display error interrupted this view. Try loading it again.</p>
         <div className="fallback-actions">

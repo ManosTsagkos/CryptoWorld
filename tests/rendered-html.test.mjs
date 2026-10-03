@@ -105,13 +105,24 @@ test("server-renders the branded dashboard without exposing credentials", async 
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>Top Crypto Signals/);
+  assert.match(html, /<title>CryptoWorld/);
+  assert.match(html, /aria-label="CryptoWorld home"/);
+  assert.match(html, /rel="icon"[^>]+href="\/cryptoworld-logo\.png"/);
+  assert.doesNotMatch(html, /Top Crypto Signals|TOP CRYPTO SIGNALS/);
   assert.match(html, /SIGNAL INTELLIGENCE CORE/);
   assert.match(html, /MACRO &amp; GEOPOLITICAL NEWS/);
   assert.doesNotMatch(
     html,
     /vinext-starter|Your site is taking shape|(?:gsk_|AIza|sk-or-v1-)[A-Za-z0-9_-]{20,}/i,
   );
+});
+
+test("serves the CryptoWorld logo as a PNG asset", async () => {
+  const response = await request("/cryptoworld-logo.png");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^image\/png\b/i);
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  assert.deepEqual(Array.from(bytes.slice(0, 8)), [137, 80, 78, 71, 13, 10, 26, 10]);
 });
 
 test("health endpoint reaches a migrated D1 database", async () => {

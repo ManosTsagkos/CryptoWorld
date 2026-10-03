@@ -1,6 +1,10 @@
-# Top Crypto Signals
+<p align="center">
+  <img src="public/cryptoworld-logo.png" alt="CryptoWorld globe and crypto logo" width="100" />
+</p>
 
-[![Quality checks](https://github.com/ManosTsagkos/top-crypto-signals/actions/workflows/quality.yml/badge.svg)](https://github.com/ManosTsagkos/top-crypto-signals/actions/workflows/quality.yml)
+# CryptoWorld
+
+[![Quality checks](https://github.com/ManosTsagkos/CryptoWorld/actions/workflows/quality.yml/badge.svg)](https://github.com/ManosTsagkos/CryptoWorld/actions/workflows/quality.yml)
 
 A crypto dashboard with live market data, interactive charts and a signal-analysis engine. It brings prices, technical indicators, derivatives data, DeFi and news into one workspace. AI news summaries are optional; the app runs without API keys or paid services.
 
@@ -25,13 +29,13 @@ Captured from the running app, not mockups. Prices and headlines change with the
 
 ## Run locally
 
-To try the full app in your browser, [open it in GitHub Codespaces](https://codespaces.new/ManosTsagkos/top-crypto-signals). The dev container installs dependencies and migrates a private local demo database. Run `npm run dev -- --host 0.0.0.0 --port 5173` and open the forwarded **Top Crypto Signals demo** port. Codespaces requires a GitHub account and uses the reviewer's own quota; it is not a permanently hosted public demo. Keep the port private and stop the codespace when finished. See [GitHub's port-forwarding guide](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace) if needed.
+To try the full app in your browser, [open it in GitHub Codespaces](https://codespaces.new/ManosTsagkos/CryptoWorld). The dev container installs dependencies and migrates a private local demo database. Run `npm run dev -- --host 0.0.0.0 --port 5173` and open the forwarded **CryptoWorld demo** port. Codespaces requires a GitHub account and uses the reviewer's own quota; it is not a permanently hosted public demo. Keep the port private and stop the codespace when finished. See [GitHub's port-forwarding guide](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace) if needed.
 
 To run on your computer, use Node.js **22.13 or newer**:
 
 ```bash
-git clone https://github.com/ManosTsagkos/top-crypto-signals.git
-cd top-crypto-signals
+git clone https://github.com/ManosTsagkos/CryptoWorld.git
+cd CryptoWorld
 npm ci
 npm run db:migrate:local
 npm run dev

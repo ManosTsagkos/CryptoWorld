@@ -25,24 +25,29 @@ export async function generateMetadata(): Promise<Metadata> {
   const origin = `${protocol}://${host}`;
 
   return {
-    title: "Top Crypto Signals — Market Intelligence",
+    title: "CryptoWorld — All-in-One Crypto Intelligence",
     description:
       "Live crypto market data, interactive analytics and optional AI-assisted signals. A full-stack portfolio project.",
+    icons: {
+      icon: { url: "/cryptoworld-logo.png", type: "image/png" },
+      apple: "/cryptoworld-logo.png",
+    },
     openGraph: {
-      title: "Top Crypto Signals",
+      siteName: "CryptoWorld",
+      title: "CryptoWorld — All-in-One Crypto Intelligence",
       description: "Live market data, interactive charts and optional AI-assisted analysis.",
       images: [
         {
           url: `${origin}/og.png`,
           width: 1731,
           height: 909,
-          alt: "Top Crypto Signals neon global market intelligence network",
+          alt: "CryptoWorld neon global market intelligence network",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Top Crypto Signals",
+      title: "CryptoWorld — All-in-One Crypto Intelligence",
       description: "Live market data, interactive charts and optional AI-assisted analysis.",
       images: [`${origin}/og.png`],
     },

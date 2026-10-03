@@ -52,10 +52,11 @@ test("documents a reproducible quality-check command", async () => {
 test("the demo container sets up a local database without loading owner credentials", async () => {
   const container = JSON.parse(await text(".devcontainer/devcontainer.json"));
 
+  assert.equal(container.name, "CryptoWorld");
   assert.equal(container.image, "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm");
   assert.equal(container.postCreateCommand, "npm ci && npm run db:migrate:local");
   assert.deepEqual(container.forwardPorts, [5173]);
-  assert.equal(container.portsAttributes["5173"].label, "Top Crypto Signals demo");
+  assert.equal(container.portsAttributes["5173"].label, "CryptoWorld demo");
   assert.equal(container.remoteUser, "node");
   assert.equal(container.containerEnv, undefined);
   assert.equal(container.remoteEnv, undefined);

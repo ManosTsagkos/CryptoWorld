@@ -2,7 +2,7 @@
 
 ## System overview
 
-Top Crypto Signals is a React application served through a Cloudflare Worker. The Worker owns third-party requests, normalization, caching, signal calculations and database access so API credentials and provider-specific response formats do not leak into the browser.
+CryptoWorld is a React application served through a Cloudflare Worker. The Worker owns third-party requests, normalization, caching, signal calculations and database access so API credentials and provider-specific response formats do not leak into the browser.
 
 ## Main components
 
@@ -44,6 +44,8 @@ Cloudflare D1 stores four logical areas:
 | `kv_cache`           | Shared JSON cache with expiry timestamps.            |
 
 Drizzle schema definitions live in `db/schema.ts`; ordered SQL migrations live in `drizzle/`.
+
+The existing Worker and D1 resource names remain `top-crypto-signals` and `top-crypto-signals-db`. They are deployment identifiers, not the product name; retaining them avoids changing an existing database when updating the CryptoWorld branding.
 
 ## Market-data flow
 
