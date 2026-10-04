@@ -4,6 +4,30 @@
 
 CryptoWorld is a React application served through a Cloudflare Worker. The Worker owns third-party requests, normalization, caching, signal calculations and database access so API credentials and provider-specific response formats do not leak into the browser.
 
+```mermaid
+flowchart LR
+  subgraph Public[Public portfolio on GitHub Pages]
+    Sample[Static HTML and JavaScript sample]
+    Fixed[Fixed illustrative prices]
+    Sample --> Fixed
+  end
+  subgraph App[Full application: local simulator or deployed Worker]
+    UI[React dashboard]
+    Browser[Browser-local preferences and watchlist]
+    API[Same-origin Worker API]
+    Core[Technical indicators and risk gates]
+    DB[(D1 / SQLite)]
+    UI <--> Browser
+    UI --> API
+    API --> Core
+    API <--> DB
+  end
+  API --> Providers[Public market and news providers]
+  API -. optional .-> AI[AI provider with server-side credentials]
+```
+
+The Pages sample has no connection to the Worker or third-party providers. Its watchlist is stored separately from the full app's watchlist. The full application needs internet access for public feeds; model-generated news interpretation additionally needs a configured AI provider key.
+
 ## Main components
 
 ### React dashboard

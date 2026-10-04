@@ -2,6 +2,17 @@
 
 Visit the [public interactive demo](https://manostsagkos.github.io/CryptoWorld/#interactive-demo) to try a sample dashboard with no installation or account. Select an asset and chart range, move the chart cursor, inspect the sample trend, search the asset table and save a watchlist. Every price is a fixed, illustrative example; this browser-only demo makes no live market-data or AI requests. The page also presents screenshots of the full app.
 
+## One-minute public demo
+
+1. Choose **Ethereum** and **1 month**. The chart, price summary and accessible chart description update together.
+2. Move **Inspect a point** with the keyboard arrow keys to read individual prices. Press **Inspect sample trend** to compare the latest price with the explained five-point average; this is an illustrative calculation, not the full signal engine.
+3. Search for **Solana**, press its **Save** button and turn on **Show my watchlist**. Clear the search or try a name outside the saved list to see the empty state.
+4. Reload the page. The watchlist remains in this browser; when storage is blocked, it still works for the current visit and tells you that persistence is unavailable.
+
+The shipped demo controller is exercised by [interaction tests](../tests/unit/portfolio-demo.test.mjs), including malformed stored data, blocked storage and cross-tab updates. The [architecture](architecture.md) explains how this static sample differs from the live application.
+
+## Full application review
+
 [Open GitHub Codespaces](https://codespaces.new/ManosTsagkos/CryptoWorld) to run the full app in a browser with public feeds. Codespaces requires a GitHub account, uses your quota and should be stopped after the review.
 
 Start with the [dashboard screenshot](screenshots/dashboard.jpg), [Market Overview](screenshots/market-overview.jpg) and [mobile view](screenshots/mobile.jpg), or run the app to try the interactions yourself.

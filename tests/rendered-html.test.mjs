@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { spawn, spawnSync } from "node:child_process";
 import { createServer } from "node:net";
-import { readdir, readFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm } from "node:fs/promises";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import test, { after, before } from "node:test";
 
@@ -15,6 +16,7 @@ if (process.platform === "win32" && !environment.CI && nodeHelp.includes("--use-
 let server;
 let serverOutput = "";
 let origin;
+let testState;
 
 async function unusedPort() {
   const socket = createServer();
@@ -30,7 +32,12 @@ async function unusedPort() {
 }
 
 before(async () => {
-  // Tests use a separate local D1 store and cannot load the developer's AI keys.
+  // A fresh store per run avoids stale/corrupt state and concurrent-suite collisions.
+  // It stays separate from the developer's database and cannot load their AI keys.
+  const stateParent = fileURLToPath(new URL(".wrangler/", root));
+  await mkdir(stateParent, { recursive: true });
+  testState = await mkdtemp(join(stateParent, "test-"));
+  environment.CRYPTOWORLD_TEST_STATE = testState;
   const wranglerCli = fileURLToPath(new URL("node_modules/wrangler/bin/wrangler.js", root));
   const migration = spawnSync(
     process.execPath,
@@ -42,7 +49,7 @@ before(async () => {
       "top-crypto-signals-db",
       "--local",
       "--persist-to",
-      ".wrangler/test-state",
+      testState,
     ],
     {
       cwd: fileURLToPath(root),
@@ -54,7 +61,7 @@ before(async () => {
   assert.equal(
     migration.status,
     0,
-    `Test database migration failed.\n${migration.stderr}\n${migration.stdout}`,
+    `Test database migration failed.\n${migration.error?.message ?? ""}\n${migration.stderr}\n${migration.stdout}`,
   );
 
   const port = await unusedPort();
@@ -92,8 +99,19 @@ before(async () => {
   throw new Error(`Timed out waiting for Vite.\n${serverOutput}`);
 });
 
-after(() => {
-  server?.kill("SIGTERM");
+after(async () => {
+  if (server && server.exitCode === null) {
+    await new Promise((resolve) => {
+      const timer = setTimeout(resolve, 5_000);
+      server.once("exit", () => {
+        clearTimeout(timer);
+        resolve();
+      });
+      server.kill("SIGTERM");
+    });
+  }
+  // This path was created by mkdtemp above, never a developer persistence directory.
+  if (testState) await rm(testState, { recursive: true, force: true, maxRetries: 3 });
 });
 
 function request(path, options) {

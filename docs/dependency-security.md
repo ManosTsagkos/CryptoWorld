@@ -1,6 +1,6 @@
 # Dependency security review
 
-Reviewed on 3 October 2026. Audit results can change when new advisories are published.
+Reviewed on 4 October 2026 using a fresh `npm ci` from the committed lockfile. Audit results can change when new advisories are published.
 
 ## Outstanding development-tool advisory
 

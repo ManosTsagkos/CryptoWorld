@@ -36,7 +36,10 @@ export default defineConfig(async ({ command, mode }) => {
         configPath: "./wrangler.jsonc",
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         ...(mode === "test"
-          ? { persistState: { path: ".wrangler/test-state" }, inspectorPort: false }
+          ? {
+              persistState: { path: process.env.CRYPTOWORLD_TEST_STATE ?? ".wrangler/test-state" },
+              inspectorPort: false,
+            }
           : {}),
         // Build artifacts must never package a developer's local AI keys.
         // Deployment supplies secrets independently through the Worker environment.

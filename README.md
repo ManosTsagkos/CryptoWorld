@@ -12,6 +12,24 @@ Crypto all in one: a dashboard with live market data, interactive charts and a s
 
 The **[public interactive demo](https://manostsagkos.github.io/CryptoWorld/#interactive-demo)** opens without installation or a GitHub account. Switch assets and chart ranges, inspect sample points, search the table and save a browser-local watchlist. It uses clearly labelled, fixed example prices and makes no market-data or AI requests. The page also includes real app screenshots and architecture notes. Use Codespaces or a local clone for the full app with live feeds, the globe and the signal engine.
 
+**Stack:** TypeScript · React 19 · Vinext/Vite · Cloudflare Workers · D1/SQLite · Drizzle · Three.js
+
+## Review in a minute
+
+1. **Try the interface:** open the [interactive sample](https://manostsagkos.github.io/CryptoWorld/#interactive-demo), choose Ethereum and 1 month, inspect its trend and save an asset. The [walkthrough](docs/portfolio.md#one-minute-public-demo) explains what each action demonstrates.
+2. **Read one engineering decision:** the table below connects an implementation to the failure it handles and its tests.
+3. **Check the evidence:** open [GitHub Actions](https://github.com/ManosTsagkos/CryptoWorld/actions/workflows/quality.yml), the [architecture map](docs/architecture.md#system-overview) or the [local setup](#run-locally). The public sample and the full application have distinct scopes.
+
+## Engineering decisions you can inspect
+
+| Decision                                            | What it handles                                                                    | Implementation and evidence                                                                                                                                                          |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Keep provider adapters and secrets in the Worker.   | Upstream failures, stale data and browser credential exposure.                     | [API and fallback paths](worker/index.ts), [request and runtime tests](tests/rendered-html.test.mjs).                                                                                |
+| Resolve signals only from complete candle coverage. | Missing minutes and ambiguous stop/target order within one candle.                 | [Pure signal helpers](worker/signal-core.ts), [boundary tests](tests/unit/backend-core.test.mjs).                                                                                    |
+| Persist wallet changes atomically in D1.            | Concurrent daily claims and isolated visitor wallets.                              | [Schema and migrations](db/schema.ts), [fresh-database checks](tests/unit/database-schema.test.mjs), [runtime wallet tests](tests/rendered-html.test.mjs).                           |
+| Synchronize browser preferences across tabs.        | Stored junk, blocked storage and stale views in another tab.                       | [Browser store](app/browser-store.ts), [frontend tests](tests/unit/frontend-core.test.mjs).                                                                                          |
+| Publish only an explicit portfolio file list.       | Accidentally exposing application builds, local databases or credentials on Pages. | [Portfolio builder](scripts/build-portfolio.mjs), [publication boundary tests](tests/unit/portfolio-build.test.mjs), [sample interaction tests](tests/unit/portfolio-demo.test.mjs). |
+
 ## Screenshots
 
 ![Dashboard](docs/screenshots/dashboard.jpg)
@@ -101,7 +119,7 @@ This runs the secret-pattern scan, formatting check, ESLint, TypeScript, unit te
 
 The tests cover candle normalization, complete three-hour aggregation, RSI, risk gates, conservative signal outcomes, browser settings and cross-tab storage, chart sampling, RSS/Atom parsing and Unicode sharing. They also apply the migrations to a fresh SQLite database and check them against the schema.
 
-Runtime tests start the app with an isolated local D1 database and no AI credentials. They check rendering, wallet isolation, concurrent daily grants, request validation, origin checks and escaped share pages. The generated build is checked for secret files and credential-shaped client values. Automated tests do not rely on upstream APIs or make paid AI calls.
+Runtime tests start the app with a fresh, isolated local D1 database for each run and no AI credentials, then remove that test store. They check rendering, wallet isolation, concurrent daily grants, request validation, origin checks and escaped share pages. The generated build is checked for secret files and credential-shaped client values. Automated tests do not rely on upstream APIs or make paid AI calls.
 
 Individual commands are available as `npm run lint`, `npm run typecheck`, `npm run test:unit` and `npm run test:smoke`. If setup fails, see [troubleshooting](docs/troubleshooting.md) and [API errors](docs/api-errors.md).
 
@@ -119,6 +137,6 @@ The next priorities are authenticated accounts, scheduled resolution, background
 
 Local credentials, databases, build output and personal hosting configuration are excluded from the public file set. Public source code is still visible by design. See [SECURITY.md](SECURITY.md), [CONTRIBUTING.md](CONTRIBUTING.md) and the [GitHub publication checklist](docs/publishing.md).
 
-As of 3 October 2026, the full dependency audit reports an unpatched development/build-tool advisory; the production-only audit reports none. The [dependency review](docs/dependency-security.md) records the affected package, exposure and reproduction commands.
+As of 4 October 2026, the full dependency audit reports an unpatched development/build-tool advisory; the production-only audit reports none. The [dependency review](docs/dependency-security.md) records the affected package, exposure and reproduction commands.
 
 No open-source license has been selected. The source is provided for portfolio review.
