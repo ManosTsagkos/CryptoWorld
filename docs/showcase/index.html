@@ -23,6 +23,7 @@
     <link rel="icon" type="image/png" href="./assets/cryptoworld-logo.png" />
     <link rel="stylesheet" href="./styles.css" />
     <script src="./showcase.js" defer></script>
+    <script src="./demo.mjs" type="module"></script>
     <title>CryptoWorld — A full-stack market intelligence project</title>
   </head>
   <body>
@@ -33,6 +34,7 @@
         <span>Crypto<span class="brand-accent">World</span></span>
       </a>
       <nav class="header-nav" aria-label="Main navigation">
+        <a class="nav-link" href="#interactive-demo">Demo</a>
         <a class="nav-link" href="#preview">Preview</a>
         <a class="nav-link" href="#under-the-hood">Architecture</a>
         <a
@@ -64,20 +66,20 @@
             immersive crypto workspace.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#preview"
-              >Explore preview <span aria-hidden="true">↓</span></a
+            <a class="button button-primary" href="#interactive-demo"
+              >Try interactive demo <span aria-hidden="true">↓</span></a
             >
             <a
               class="button button-secondary"
               href="https://codespaces.new/ManosTsagkos/CryptoWorld"
               target="_blank"
               rel="noopener noreferrer"
-              >Run interactive demo <span aria-hidden="true">↗</span></a
+              >Run full app <span aria-hidden="true">↗</span></a
             >
           </div>
           <p class="demo-note">
-            The preview below is a screenshot showcase. The full interactive app runs locally or in
-            Codespaces, which requires a GitHub account and uses your own quota.
+            Try the sample dashboard below, with no account or installation. It uses fixed example
+            prices. The full app runs locally or in Codespaces with public market feeds.
           </p>
         </div>
         <a
@@ -112,18 +114,152 @@
       </div>
 
       <section
+        class="demo-section wrap section-space"
+        id="interactive-demo"
+        aria-labelledby="demo-heading"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / Explore the sample</p>
+            <h2 id="demo-heading">Your first look. Hands on.</h2>
+          </div>
+          <p>Switch assets, explore the chart<br />and build a local watchlist.</p>
+        </div>
+        <p class="sample-notice">
+          <strong>Offline sample data</strong> · All prices are fixed, illustrative examples. This
+          demo makes no market-data or AI requests. The full app's screenshots and source are below.
+        </p>
+        <div class="demo-workspace">
+          <div class="demo-chart-panel">
+            <div class="demo-controls">
+              <label for="demo-coin"
+                >Asset
+                <select id="demo-coin">
+                  <option value="BTC">Bitcoin · BTC</option>
+                  <option value="ETH">Ethereum · ETH</option>
+                  <option value="SOL">Solana · SOL</option>
+                  <option value="AVAX">Avalanche · AVAX</option>
+                  <option value="LINK">Chainlink · LINK</option>
+                </select>
+              </label>
+              <label for="demo-range"
+                >Sample range
+                <select id="demo-range">
+                  <option value="1D">1 day</option>
+                  <option value="1W" selected>1 week</option>
+                  <option value="1M">1 month</option>
+                </select>
+              </label>
+            </div>
+            <div class="demo-price-summary" aria-live="polite" aria-atomic="true">
+              <h3 id="demo-asset-name">Bitcoin / BTC</h3>
+              <strong id="demo-price">$64,280.00</strong>
+              <span id="demo-change"></span>
+            </div>
+            <svg
+              class="demo-chart"
+              viewBox="0 0 760 240"
+              role="img"
+              aria-labelledby="demo-chart-title demo-chart-description"
+            >
+              <title id="demo-chart-title">Bitcoin sample chart</title>
+              <desc id="demo-chart-description">
+                Enable JavaScript to explore fixed sample prices.
+              </desc>
+              <defs>
+                <pattern id="demo-grid" width="76" height="48" patternUnits="userSpaceOnUse">
+                  <path d="M 76 0 L 0 0 0 48" fill="none" stroke="#222b3b" stroke-width="1" />
+                </pattern>
+              </defs>
+              <rect width="760" height="240" fill="url(#demo-grid)" />
+              <path
+                id="demo-chart-line"
+                fill="none"
+                stroke="#59e5ff"
+                stroke-width="3"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              />
+              <circle
+                id="demo-chart-cursor"
+                r="6"
+                fill="#080b12"
+                stroke="#59e5ff"
+                stroke-width="3"
+              />
+            </svg>
+            <label class="demo-cursor-label" for="demo-cursor"
+              >Inspect a point
+              <input
+                id="demo-cursor"
+                type="range"
+                min="0"
+                max="20"
+                value="20"
+                step="1"
+                aria-describedby="demo-cursor-label"
+              />
+            </label>
+            <p id="demo-cursor-label" class="demo-caption" aria-live="polite"></p>
+            <button id="demo-inspect" class="button button-secondary" type="button">
+              Inspect sample trend
+            </button>
+            <p id="demo-trend" class="demo-trend" role="status"></p>
+          </div>
+          <div class="demo-market-panel">
+            <div class="demo-table-heading">
+              <h3>Sample markets</h3>
+              <span id="demo-result-count">5 sample assets</span>
+            </div>
+            <label for="demo-search"
+              >Search assets
+              <input id="demo-search" type="search" placeholder="Name or symbol" maxlength="80" />
+            </label>
+            <label class="demo-filter" for="demo-only-watched">
+              <input id="demo-only-watched" type="checkbox" /> Show my watchlist
+            </label>
+            <div class="demo-table-scroll">
+              <table class="demo-market-table">
+                <caption class="visually-hidden">
+                  Fixed example prices and changes in the one-day sample
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Asset</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">1D sample</th>
+                    <th scope="col">Watch</th>
+                  </tr>
+                </thead>
+                <tbody id="demo-market-rows"></tbody>
+              </table>
+            </div>
+            <p id="demo-empty" class="demo-caption" hidden>No sample assets match these filters.</p>
+            <p id="demo-watch-status" class="demo-caption" role="status">
+              Save an asset to keep a watchlist in this browser.
+            </p>
+          </div>
+        </div>
+        <noscript
+          ><p class="noscript-note">
+            JavaScript is needed for the interactive sample. You can still explore the app
+            screenshots below or inspect the source on GitHub.
+          </p></noscript
+        >
+      </section>
+
+      <section
         class="preview-section wrap section-space"
         id="preview"
         aria-labelledby="preview-heading"
       >
         <div class="section-heading">
           <div>
-            <p class="eyebrow">01 / The interface</p>
+            <p class="eyebrow">02 / The full interface</p>
             <h2 id="preview-heading">A closer look.</h2>
           </div>
           <p>
-            Actual captures from the running app.<br />No concept renders. No simulated live charts
-            here.
+            Actual captures from the full app.<br />Screenshots are separate from the sample above.
           </p>
         </div>
         <div class="preview-tabs" role="tablist" aria-label="Application screenshots">
@@ -293,7 +429,7 @@
       >
         <div class="section-heading">
           <div>
-            <p class="eyebrow">02 / Beyond the pixels</p>
+            <p class="eyebrow">03 / Beyond the pixels</p>
             <h2 id="architecture-heading">Designed on the surface.<br />Engineered underneath.</h2>
           </div>
           <a
@@ -353,7 +489,7 @@
 
       <section class="run-section wrap section-space" id="run" aria-labelledby="run-heading">
         <div class="run-copy">
-          <p class="eyebrow">03 / Try it yourself</p>
+          <p class="eyebrow">04 / Run the full app</p>
           <h2 id="run-heading">The source is here.<br />The next click is yours.</h2>
           <p>
             Run the full app to drag the globe, switch chart ranges, save a watchlist and try the
@@ -407,9 +543,10 @@ npm run dev</code></pre>
         </div>
         <div class="boundaries-copy">
           <p>
-            This page is a static showcase, not a hosted backend or a live trading terminal. The
-            runnable app uses example portfolio holdings, anonymous demo credits and browser-local
-            alerts. It has no authenticated accounts, payments or subscription processing.
+            This page combines an interactive dashboard using fixed sample data with real app
+            screenshots. The full runnable app uses example portfolio holdings, anonymous demo
+            credits and browser-local alerts. It has no authenticated accounts, payments or
+            subscription processing.
           </p>
           <p>
             Technical signals and candle-based outcomes are educational, not executed trades or

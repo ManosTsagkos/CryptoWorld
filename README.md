@@ -8,9 +8,9 @@
 
 Crypto all in one: a dashboard with live market data, interactive charts and a signal-analysis engine. It brings prices, technical indicators, derivatives data, DeFi and news into one workspace. AI news summaries are optional; the app runs without API keys or paid services.
 
-[Portfolio preview](https://manostsagkos.github.io/CryptoWorld/) · [Screenshots](#screenshots) · [Run interactive demo](https://codespaces.new/ManosTsagkos/CryptoWorld) · [Download source](https://github.com/ManosTsagkos/CryptoWorld/releases/latest) · [Architecture](docs/architecture.md)
+[Interactive demo](https://manostsagkos.github.io/CryptoWorld/#interactive-demo) · [Repository](https://github.com/ManosTsagkos/CryptoWorld) · [Screenshots](#screenshots) · [Run full app](https://codespaces.new/ManosTsagkos/CryptoWorld) · [Download source](https://github.com/ManosTsagkos/CryptoWorld/releases/latest) · [Architecture](docs/architecture.md)
 
-The **[public portfolio preview](https://manostsagkos.github.io/CryptoWorld/)** opens without installation or a GitHub account. It presents real app screenshots, the architecture and demo instructions. It is a static showcase, not a hosted version of the live dashboard; use Codespaces or a local clone for the full interactive app.
+The **[public interactive demo](https://manostsagkos.github.io/CryptoWorld/#interactive-demo)** opens without installation or a GitHub account. Switch assets and chart ranges, inspect sample points, search the table and save a browser-local watchlist. It uses clearly labelled, fixed example prices and makes no market-data or AI requests. The page also includes real app screenshots and architecture notes. Use Codespaces or a local clone for the full app with live feeds, the globe and the signal engine.
 
 ## Screenshots
 
@@ -49,7 +49,7 @@ For a quick look around, follow the [demo walkthrough](docs/portfolio.md). It co
 
 ## Portfolio website
 
-The GitHub Pages showcase is built from `docs/showcase/` with `npm run build:portfolio`. The build copies only its HTML, stylesheet, script, logo and three screenshots into `dist/portfolio`; it never deploys Worker code, databases, environment files or the full application build. The Pages workflow runs the complete quality check before publishing. See [publishing](docs/publishing.md) for the setup.
+The GitHub Pages demo is built from `docs/showcase/` with `npm run build:portfolio`. The build copies only its HTML, stylesheet, screenshot script, two demo modules, logo and three screenshots into `dist/portfolio`; it never deploys Worker code, databases, environment files or the full application build. The Pages workflow runs the complete quality check before publishing. Tests cover sample calculations, filtering, watchlist storage and publication boundaries. See [publishing](docs/publishing.md) for the setup.
 
 ## What's in the app
 

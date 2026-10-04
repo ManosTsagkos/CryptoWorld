@@ -1,6 +1,8 @@
 # Demo walkthrough
 
-Visit the [public portfolio preview](https://manostsagkos.github.io/CryptoWorld/) for a no-installation overview, or [open GitHub Codespaces](https://codespaces.new/ManosTsagkos/CryptoWorld) to run the full app in a browser. The public preview is a screenshot showcase, not the live dashboard. Codespaces requires a GitHub account, uses your quota and should be stopped after the review.
+Visit the [public interactive demo](https://manostsagkos.github.io/CryptoWorld/#interactive-demo) to try a sample dashboard with no installation or account. Select an asset and chart range, move the chart cursor, inspect the sample trend, search the asset table and save a watchlist. Every price is a fixed, illustrative example; this browser-only demo makes no live market-data or AI requests. The page also presents screenshots of the full app.
+
+[Open GitHub Codespaces](https://codespaces.new/ManosTsagkos/CryptoWorld) to run the full app in a browser with public feeds. Codespaces requires a GitHub account, uses your quota and should be stopped after the review.
 
 Start with the [dashboard screenshot](screenshots/dashboard.jpg), [Market Overview](screenshots/market-overview.jpg) and [mobile view](screenshots/mobile.jpg), or run the app to try the interactions yourself.
 

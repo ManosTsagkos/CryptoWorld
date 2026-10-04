@@ -8,6 +8,8 @@ export const portfolioFiles = Object.freeze([
   ["docs/showcase/index.html", "index.html"],
   ["docs/showcase/styles.css", "styles.css"],
   ["docs/showcase/showcase.js", "showcase.js"],
+  ["docs/showcase/demo.mjs", "demo.mjs"],
+  ["docs/showcase/demo-model.mjs", "demo-model.mjs"],
   ["public/cryptoworld-logo.png", "assets/cryptoworld-logo.png"],
   ["docs/screenshots/dashboard.jpg", "assets/dashboard.jpg"],
   ["docs/screenshots/market-overview.jpg", "assets/market-overview.jpg"],

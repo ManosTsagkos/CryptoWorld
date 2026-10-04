@@ -29,7 +29,15 @@ test("portfolio publication copies only its explicit static asset list", async (
   const output = await buildPortfolio(root);
   assert.deepEqual(
     (await readdir(output)).sort(),
-    [".nojekyll", "assets", "index.html", "showcase.js", "styles.css"].sort(),
+    [
+      ".nojekyll",
+      "assets",
+      "index.html",
+      "showcase.js",
+      "demo.mjs",
+      "demo-model.mjs",
+      "styles.css",
+    ].sort(),
   );
   assert.deepEqual(
     (await readdir(join(output, "assets"))).sort(),
@@ -55,17 +63,11 @@ test("a failed portfolio build preserves the previously generated preview", asyn
 test("portfolio assets cannot be symbolic links to private files", async (t) => {
   const root = await fixture(t);
   const logoPath = join(root, "public", "cryptoworld-logo.png");
-  const privatePath = join(root, ".dev.vars");
-  await writeFile(privatePath, "private-placeholder");
+  const privatePath = join(root, ".private-config");
+  await mkdir(privatePath);
+  await writeFile(join(privatePath, ".dev.vars"), "private-placeholder");
   await rm(logoPath);
-  try {
-    await symlink(privatePath, logoPath, "file");
-  } catch (error) {
-    if (process.platform === "win32" && error.code === "EPERM") {
-      t.skip("Windows file symlinks require Developer Mode or elevated privileges.");
-      return;
-    }
-    throw error;
-  }
+  // Windows directory junctions exercise the same lstat boundary without elevated privileges.
+  await symlink(privatePath, logoPath, process.platform === "win32" ? "junction" : "dir");
   await assert.rejects(buildPortfolio(root), /regular file/);
 });

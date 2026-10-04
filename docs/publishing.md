@@ -37,9 +37,9 @@ Do not paste that placeholder URL unchanged. If updating an existing public repo
 
 The project intentionally leaves its license unselected. Choose an appropriate license before advertising it as an open-source project.
 
-## Public portfolio preview
+## Public interactive demo
 
-The repository website is [manostsagkos.github.io/CryptoWorld](https://manostsagkos.github.io/CryptoWorld/). It is a static showcase with screenshots and instructions; the Cloudflare Worker/D1 application still runs locally or in Codespaces.
+The repository website is [manostsagkos.github.io/CryptoWorld](https://manostsagkos.github.io/CryptoWorld/). Its interactive sample dashboard supports chart ranges, asset selection, point inspection, search and a local watchlist. It uses fixed example prices and makes no market-data or AI requests. Real app screenshots and setup instructions are included; the full Cloudflare Worker/D1 application runs locally or in Codespaces.
 
 The `.github/workflows/portfolio-pages.yml` workflow checks the app, builds the static allowlist with `npm run build:portfolio`, uploads only `dist/portfolio` and publishes through the `github-pages` environment. In repository Settings → Pages, the publishing source must be **GitHub Actions**. The deploy job has only the Pages and identity-token write permissions it needs. This follows [GitHub's custom-workflow setup](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
