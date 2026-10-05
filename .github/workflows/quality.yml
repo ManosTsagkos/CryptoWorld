@@ -4,6 +4,7 @@ on:
   push:
     branches: [master, main]
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -20,3 +21,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+
+  ci-gate:
+    name: CI gate
+    needs: verify
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require successful quality checks
+        env:
+          VERIFY_RESULT: ${{ needs.verify.result }}
+        run: test "$VERIFY_RESULT" = success

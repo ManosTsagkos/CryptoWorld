@@ -12,6 +12,10 @@ The package is transitive development tooling, reached through `micromatch` and 
 
 Until an upstream fix is released, use trusted repository configuration and source files when running lint or builds. Review changes to glob patterns, dynamic imports and build configuration before running tooling from an unfamiliar branch. Recheck the upstream advisory and npm releases, then update the lockfile and run the complete quality checks when a compatible fix becomes available.
 
+## Dependency maintenance
+
+Dependabot checks npm dependencies and GitHub Actions weekly. Compatible minor and patch updates are grouped and eligible for automatic merging only after every required CI check passes. Major-version updates require manual review. The `CI gate` fails if the quality-check job fails, is cancelled or is skipped, so an incomplete test run cannot authorize an automatic update.
+
 ## Reproducing the review
 
 ```sh
