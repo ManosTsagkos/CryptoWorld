@@ -52,7 +52,7 @@
     "prettier": "3.9.9",
     "react-server-dom-webpack": "19.3.0",
     "tailwindcss": "4.3.3",
-    "typescript": "5.9.3",
+    "typescript": "7.0.2",
     "vinext": "1.0.1",
     "vite": "8.3.3",
     "wrangler": "4.148.0"
